@@ -3,11 +3,11 @@ name: Build Plugin
 on:
   push:
     branches:
-      - shulker
+      - main
 
   pull_request:
     branches:
-      - shulker
+      - main
 
   workflow_dispatch:
 

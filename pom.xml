@@ -102,7 +102,7 @@
         <dependency>
             <groupId>com.ontadev</groupId>
             <artifactId>libs</artifactId>
-            <version>0.2.2</version>
+            <version>0.2.3</version>
             <scope>provided</scope>
         </dependency>
 

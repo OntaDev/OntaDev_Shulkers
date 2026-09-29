@@ -44,9 +44,6 @@ public class LocalizationService {
         }
     }
 
-    /**
-     * @return перевод для ключа, либо сам ключ, если перевод не найден.
-     */
     @NonNull
     public String getTranslation(String key) {
         return translations.getOrDefault(key, key);

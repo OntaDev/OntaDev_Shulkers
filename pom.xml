@@ -84,6 +84,7 @@
 
     <dependencies>
         <!-- Paper/Spigot 1.16.5+ -->
+        <!--suppress VulnerableLibrariesLocal -->
         <dependency>
             <groupId>com.destroystokyo.paper</groupId>
             <artifactId>paper-api</artifactId>

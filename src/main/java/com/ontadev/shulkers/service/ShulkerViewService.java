@@ -4,7 +4,6 @@ import com.ontadev.libs.ioc.annotation.AutoListener;
 import com.ontadev.libs.ioc.annotation.stereotype.Service;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
-import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -63,9 +62,10 @@ public class ShulkerViewService implements Listener {
         ShulkerBox shulkerBox = (ShulkerBox) meta.getBlockState();
         Inventory realInventory = shulkerBox.getInventory();
 
-        String title = resolveTitle(shulkerItem, itemMeta);
+        Component title = resolveTitle(shulkerItem, itemMeta);
 
         Inventory view = Bukkit.createInventory(null, realInventory.getSize(), title);
+        //noinspection NullableProblems
         view.setContents(realInventory.getContents());
 
         activeSessions.put(player.getUniqueId(), new ViewSession(shulkerItem, meta, shulkerBox, view));
@@ -73,12 +73,12 @@ public class ShulkerViewService implements Listener {
         return true;
     }
 
-    private String resolveTitle(ItemStack shulkerItem, ItemMeta itemMeta) {
+    private Component resolveTitle(ItemStack shulkerItem, ItemMeta itemMeta) {
         Component displayName = itemMeta.displayName();
         if (displayName instanceof TextComponent) {
-            return PlainTextComponentSerializer.plainText().serialize(displayName);
+            return displayName;
         }
-        return localizationService.getTranslation(shulkerItem.getTranslationKey());
+        return Component.text(localizationService.getTranslation(shulkerItem.getTranslationKey()));
     }
 
     @EventHandler
@@ -132,6 +132,7 @@ public class ShulkerViewService implements Listener {
     }
 
     private void persist(ViewSession session) {
+        //noinspection NullableProblems
         session.shulkerBox.getInventory().setContents(session.view.getContents());
         session.meta.setBlockState(session.shulkerBox);
         session.item.setItemMeta(session.meta);

@@ -1,9 +1,12 @@
-name: Shulkers
-version: '0.0.2'
-main: com.ppfs.shulkers.ShulkersPlugin
-api-version: '1.21'
+name: OntaDev_Shulkers
+version: '${project.version}'
+main: com.ontadev.shulkers.OntaDevShulkersPlugin
+api-version: '1.16'
 load: POSTWORLD
+authors: [ OntaDev ]
+
 depend:
+  - OntaDev_Libs
   - LuckPerms
   - WorldEdit
   - WorldGuard

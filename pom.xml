@@ -54,7 +54,6 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
                 <configuration>
-                    <!-- Mockito's bundled Byte Buddy lags behind the newest JDKs; this lets it instrument classes on JDKs it hasn't officially certified yet. -->
                     <argLine>-Dnet.bytebuddy.experimental=true</argLine>
                 </configuration>
             </plugin>
@@ -102,7 +101,7 @@
         <dependency>
             <groupId>com.ontadev</groupId>
             <artifactId>libs</artifactId>
-            <version>0.2.3</version>
+            <version>0.2.4</version>
             <scope>provided</scope>
         </dependency>
 
